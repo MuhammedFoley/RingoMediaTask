@@ -1,0 +1,23 @@
+﻿@using RingoMedia.PL.ViewModels
+@model ReminderViewModel
+
+<h2>Delete Reminder</h2>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="ReminderDateTime" class="control-label"></label>
+        <input asp-for="ReminderDateTime" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

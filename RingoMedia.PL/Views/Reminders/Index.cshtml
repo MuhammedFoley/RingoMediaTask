@@ -1,0 +1,34 @@
+﻿@using RingoMedia.PL.ViewModels
+@model IEnumerable<ReminderViewModel>
+
+<h2>Reminders</h2>
+
+<p>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date-Time</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reminder in Model)
+        {
+            <tr>
+                <td>@reminder.Title</td>
+                <td>@reminder.ReminderDateTime</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = reminder.Id })" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", new { id = reminder.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

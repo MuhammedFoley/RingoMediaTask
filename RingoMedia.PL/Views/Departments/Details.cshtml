@@ -1,0 +1,51 @@
+﻿@using RingoMedia.PL.ViewModels
+@model DepartmentDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h4>@Html.DisplayFor(model => model.Name)</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                @if (!string.IsNullOrEmpty(Model.LogoPath))
+                {
+                    <img src="@Model.LogoPath" alt="@Model.Name" class="img-fluid" />
+                }
+            </div>
+            <div class="col-md-8">
+                <dl class="row">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.ParentDepartmentName)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.ParentDepartmentName)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <h4>Sub-Departments</h4>
+    <div class="row">
+        @foreach (var subDept in Model.SubDepartments)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@subDept.Name</h5>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
